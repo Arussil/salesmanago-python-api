@@ -6,7 +6,7 @@ import requests
 from unittest import skipIf
 from unittest.mock import patch
 from tests import utils as tests_utils
-from .test_event_base import SalesManagoEventsServiceTestBase
+from .test_services_base import SalesManagoEventsServiceTestBase
 from salesmanago_python_api.services.event import SalesManagoEventService
 from salesmanago_python_api.data.event import SalesManagoEventData
 from salesmanago_python_api.data.auth import SalesManagoAuthData
@@ -28,7 +28,7 @@ class SalesManagoEventIntegrationTest(SalesManagoEventsServiceTestBase):
             "success" : True
         }
 
-        rtn = self.clientClass.addContactExtEvent(self.eventClass)
+        rtn = self.clientClass.addContactExtEvent(self.clientDataMock)
         self.assertEqual(rtn.status_code, 200)
         self.assertIn('eventId', rtn.json())
         self.assertIn('success', rtn.json())
@@ -45,7 +45,7 @@ class SalesManagoEventIntegrationTest(SalesManagoEventsServiceTestBase):
             "failedAmount": 0
         }
 
-        rtn = self.clientClass.batchAddContactExtEvent([self.eventClass])
+        rtn = self.clientClass.batchAddContactExtEvent([self.clientDataMock])
         self.assertEqual(rtn.status_code, 200)
         self.assertIn('createdAmount', rtn.json())
         self.assertIn('success', rtn.json())
