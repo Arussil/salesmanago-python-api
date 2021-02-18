@@ -151,7 +151,7 @@ class SalesManagoEventService:
             'request_body': request.body,
             'response_status': response.status_code,
             'response_json': response.json(),
-            'eventData': eventData.requestDict('addContactExtEvent')
+            'eventData': eventData.requestDict()
         }))
 
         return response
