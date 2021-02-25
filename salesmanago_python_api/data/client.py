@@ -43,6 +43,7 @@ class SalesManagoClientData:
     useApiDoubleOptIn: bool = None
     properties: dict = field(default_factory=dict)
     province: str = None
+    consentDetails: list = field(default_factory=list)
 
     VALID_STATES = ['CUSTOMER', 'PROSPECT', 'PARTNER', 'OTHER', 'UNKNOWN']
 
@@ -212,7 +213,7 @@ class SalesManagoClientData:
         ]
 
         ITERABLE_ATTRS = [
-            'tags', 'removeTags', 'properties'
+            'tags', 'removeTags', 'properties', 'consentDetails'
         ]
 
         rdata = {
